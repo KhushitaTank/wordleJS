@@ -15292,21 +15292,16 @@ const dictonary = [
   ]
   
 const wordLenght = 5;
-const FLIP_ANIMATION_DURATION = 500
-const DANCE_ANIMATION_DURATION = 500
+const flipDuration = 500
+const danceDuration = 500
 const keyboard = document.querySelector("[data-keyboard]")
 const alertContainer = document.querySelector('[data-alert-container')
 const guessGrid = document.querySelector('[data-guess-grid]')
-const offsetFormDate = new Date(2022,0,1)
-const msOffset = Date.now() - offsetFormDate 
-const dayOffset = msOffset /1000 /60/ 60 /24
-const targetWord = targetWords[Math.floor(dayOffset)]
-console.log(targetWord)
+const targetWord = targetWords[Math.floor(Math.random()*targetWords.length)]
 
 startInteraction()
 
 function startInteraction() {
-    console.log('d')
     document.addEventListener("click", handleMouseClick)
     document.addEventListener("keydown", handleKeyPress)
 }
@@ -15393,7 +15388,7 @@ function startInteraction() {
     const key = keyboard.querySelector(`[data-key="${letter}"i]`)
     setTimeout(() => {
       tile.classList.add("flip")
-    }, (index * FLIP_ANIMATION_DURATION) / 2)
+    }, (index * flipDuration) / 2)
 
     tile.addEventListener(
       "transitionend",
@@ -15485,5 +15480,5 @@ function danceTiles(tiles) {
         },
         { once: true }
       )
-    }, (index * DANCE_ANIMATION_DURATION) / 5)
+    }, (index * danceDuration) / 5)
   })}
